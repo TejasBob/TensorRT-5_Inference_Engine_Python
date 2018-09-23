@@ -64,7 +64,6 @@ def network(images):
         weights = WeightsVariable([1024, 10])
         biases = BiasVariable([10])
         fc2 = tf.nn.relu(tf.matmul(fc1, weights) + biases)
-        fc2 = tf.nn.softmax(fc2)
 
     return fc2
 
@@ -189,7 +188,7 @@ tf_model = run_training(MNIST_DATASETS)
 
 print("done training")
 
-uff_model = uff.from_tensorflow(tf_model, ["fc2/Softmax"])
+uff_model = uff.from_tensorflow(tf_model, ["fc2/Relu"])
 
 f = open("model_data/mnist.uff", "wb")
 f.write(uff_model)

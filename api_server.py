@@ -32,13 +32,12 @@ model_file = "model_data/mnist.uff"
 
 TRT_LOGGER = trt.Logger(trt.Logger.WARNING)
 
-
 builder = trt.Builder(TRT_LOGGER)  
 network = builder.create_network() 
 
 parser =  trt.UffParser()
 parser.register_input("Placeholder", (1, 28, 28))
-parser.register_output("fc2/Softmax")
+parser.register_output("fc2/Relu")
 parser.parse(model_file, network)
 builder.max_batch_size = BATCH_SIZE
 builder.max_workspace_size = 1 << 20
