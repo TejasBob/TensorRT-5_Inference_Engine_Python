@@ -20,6 +20,7 @@ TRT_LOGGER = trt.Logger(trt.Logger.WARNING)
 
 builder = trt.Builder(TRT_LOGGER)  
 network = builder.create_network() 
+
 with trt.UffParser() as parser:
 
 
